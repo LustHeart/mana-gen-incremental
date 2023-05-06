@@ -13,4 +13,6 @@ This game is combine Mana Dust to make it bigger (And playing it is your typical
 
 - This game may also contain errors due to lack of coding experience
 
+- This game uses a mobile phone to write all the code
+
 [Update information and upcoming features is written in changelog]
