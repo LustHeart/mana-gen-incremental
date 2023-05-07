@@ -1,0 +1,28 @@
+#news {
+    white-space: nowrap;
+    min-width: 0px;
+    height: 26px;
+    display: inline-block;
+}
+
+#topbar {
+    overflow: hidden;
+}
+
+.darkDust{
+	color: gray;
+	font-size: large;
+}
+.manaBit {
+	color: darkblue;
+	font-size: large;
+}
+
+body { /* no . means element type */
+	text-align: center; /* text-align centers text AND children */
+	background-color: #5bacc2;
+}
+
+*{ /* * applies to all elements, use with caution */
+      outline: none;
+  }

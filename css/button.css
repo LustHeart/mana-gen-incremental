@@ -1,0 +1,57 @@
+.upgradeButton {
+  background-color: lightblue;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.combineButton {
+  font-size : 16px;
+  border-radius: 10px;
+  color : #ffffff;
+  background-color : #650045;
+  transition-duration : 0.2s;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 1px;
+  cursor: pointer;
+}
+
+.darkButton {
+  font-size : 16px;
+  border-radius: 10px;
+  color : #868686;
+  background-color : #000000;
+  transition-duration : 0.2s;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 1px;
+  cursor: pointer;
+}
+
+.subtabs {
+  font-size : 16px;
+  border-radius: 5px;
+  color : #000000;
+  background-color : #aafffd;
+  transition-duration : 0.2s;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 1px;
+  cursor: pointer;
+}
+
+.tabs {
+  font-size : 20px;
+  border-radius: 10px;
+  color : #000000;
+  background-color : lightblue;
+  transition-duration : 0.2s;
+}
