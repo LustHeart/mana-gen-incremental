@@ -1,3 +1,5 @@
+Version 0.3 (Alpha Rewrite) Coming Soon
+
 
 Welcome to Mana Generator Incremental (MGI) 
 
