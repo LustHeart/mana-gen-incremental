@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Mana Generator Incremental (0.3)</title>
+  <link rel="icon" type="image/x-con" href="favicon.png">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+	<script src="js/saving.js" defer></script>
+	<script src="js/helper.js" defer></script>
+	<script src="js/main.js" defer></script>
+	<script src="js/function/buyables.js" defer></script>
+	<script src="js/function/upgrades.js" defer></script>
+	<script src="milestones.js" defer></script>
+</head>
+
+<body>
+    <div id="cheat" style="display:none">
+    </h3><button id="cheat1" class="repeatUpgrade" onclick="test()">Test<br>Give Every Resources for Testing<br>(Cost: Free)</button>
+    </h3><button id="cheat2" class="repeatUpgrade" onclick="remove()">Remove<br>Remove Every Resources for Testing<br>(Cost: Free)</button>
+    </div>
+    <p id="dust" style="font-size: 25px;-webkit-text-stroke: 0.5px;">You have 0 Mana Dust</p>
+    <p id="dustpersec" style="color: lightblue;font-size: small">(you are getting <span id="dps">0</span> dust per second)</p>
+    <p id="ddust" style="color: purple;font-size: large" class="shadow">You have 0 Dark Mana Dust</p>
+    <div id="tabcontainer">
+   <button onclick="tab('gen')" style='background-color: #4067a1;' class='flexbox tab'>Generator</button>
+   <button onclick="tab('combine')" style='background-color: #7a25d0;' class='flexbox tab'><span id="factory Unlocked">Combiner</span></button>
+   <button onclick="tab('upgrade')" style='background-color: #7ef0a6c5;' class='flexbox tab'><span id="prestigeUnlocked">Upgrade</span></button>
+   <button id="balancetab" onclick="tab('balance')" style='background-color: #7ef0a6c5;' class='flexbox tab'><span id="prestigeUnlocked">Balance</span></button>
+   <button onclick="tab('options')" style='background-color: #4067a1;' class='flexbox tab'>More..</button>
+   <button onclick="tab('stat')" class='flexbox tab'>Statistics</button></div>
+    <div id='gen'>
+      <button onclick="generatorTab('tier1gen')" style='background-color: #46a3cac5;' class='flexbox gentab'>Dust and Mana Bit</button>
+      <button id='tier2tab' onclick="generatorTab('tier2gen')" style='background-color: #4773b9c5;' class='flexbox gentab'>Fragments and Shard</button>
+         <div id='tier1gen'>
+             </h3><button class="repeatUpgrade" onclick="buyWands()">Wands: <span id="wands">player.wands.amount</span><br>Upgrade Wands<br>(Cost: <span id="wandsCost">player.wands.price</span> Dust)</button>
+             </h3><button class="repeatUpgrade" onclick="buyWizard()">Wizard: <span id="wizards">player.wizard</span><br>Hire Wizard<br> (Cost: <span id="wizardsCost">player.wizards.price</span> Dust)</button>
+             </h3><button class="repeatUpgrade" onclick="buyEnchanter()">Enchanter: <span id="enchanter">player.enchanter</span><br>Hire Enchanter<br> (Cost: <span id="enchanterCost1">player.enchanter.price1</span> Dust and <span id="enchanterCost2">player.enchanter.price2</span> Bit)</button><br><center>
+             </h3><button id="cauldronButton" class="repeatUpgrade" onclick="buyCauldron()">Cauldron: <span id="cauldron">player.cauldron</span><br>Buy Cauldron<br> (Cost: <span id="cauldronCost1">player.cauldron.price1</span> Dust and <span id="cauldronCost2">player.cauldron.price2</span> Dark Mana Dust)</button>
+             </center>
+         </div>
+         <div id='tier2gen'></div>
+     </div>
+    <div id='combine'>
+     <h4>Mana Bit: <span id="bit">player.bit.amount</span> <p id="autobitcheck">Auto: <input type="checkbox" id="autobitswitch"></p></h4>
+     </h3><button class="combine" onclick="combineDust()">Combine <span id="combineDustCost">player.bit.cost</span> Mana Dust --> <br> <span id="bpc">player.bit.perCombine</span> Mana Bit </button>
+     <p>Mana Fragments: <span id="fragment">player.fragment.amount</span></p>
+     </h3><button class="combine" onclick="combineBit()">Combine <span id="combineBitCost">player.bit.cost</span> Mana Bit --> <br> <span id="fpc">player.fragment.perCombine</span> Mana Fragments </button>
+    </div>
+    <div id='upgrade'>
+      <button onclick="upgradeTab('generator')" style='background-color: #7d7bd4;' class='flexbox gentab'>Upgrade</button>
+      <button id='autotab' onclick="upgradeTab('automation')" style='background-color: #c6c5f4;' class='flexbox gentab'>Automation</button>
+      <div id='generator'>
+		    <h3>Upgrades</h3>
+			   <span id="darkgen"><button id="darkUpgrade1" onclick="upgrade('darkgen')" class="upgradeButton"><b>[Dark Generator]</b> Unlock Balance tab, gain new Tier 1 Generator <br/>(50 Dark Mana Shard)</button></span>
+			   <span id="decaydown"><button id="darkUpgrade2" onclick="upgrade('decaydown')" class="upgradeButton"><b>[Decay Down]</b> Reduce price scaling for first three generator by 0.1<br>[and reduce generator current price by 50%]<br/>(150 Dark Mana Shard)</button></span>
+			   <span id="doubledust"><button id="darkUpgrade3" onclick="upgrade('doubledust')" class="upgradeButton"><b>[Double Dust]</b>Double mama dust and dark dust generating<br/>(200 Dark Mana Shard)</button></span>
+			   <span id="quadrupledust"><button id="darkUpgrade4" onclick="upgrade('quadrupledust')" class="upgradeButton"><b>[Quadruple Dust]</b>Quadruple mama dust and dark dust generating<br/>(500 Dark Mana Shard)</button></span>
+			   <span id="lightunlocked"><button id="unlockUpgrade1" onclick="upgrade('lightunlocked')" class="upgradeButton">[Light Generator] Unlock Light Mana Bit in balance tab<br/>(100 Dark Dust and 5 bit)</button></span>
+			   <span id="autounlocked"><button id="unlockUpgrade2" onclick="upgrade('autounlocked')" class="upgradeButton">[Automatic Begin] Unlock Automation Tab<br/>(100 Mana Bit)</button></span>
+			   </div>
+			   <div id='automation' style="display:none">
+			   <span id="autobit"><button id="autoUpgrade1" onclick="upgrade('autobit')" class="upgradeButton"><b>[Auto Combine: Bit]</b> Unlocked Automatic Combine for mana bit (1 / sec) <br/>(100 Mana Bit)</button></span>
+			   </div>
+			 </div>
+    <div id='balance'>
+      <button onclick="balanceTab('dark')" style='background-color: #1d1c62;' class='flexbox gentab'>Dark Mana Dust</button>
+      <button id='lighttab' onclick="balanceTab('light')" style='background-color: #c6c5f4;' class='flexbox gentab'>Light Bit</button>
+       <div id='dark'>
+        <h3>Enhance Yourself (<span id="enhance">0</span>)<br></h3><button onclick="enhanceDust()" class="darkButton">Sacrifice 100% of your mana dust with DMD<br>Multiply Mana Dust gain by +0.5<br>Cost: <span id="enhCost"></span> Dark mana Dust</button>
+        <h3>Shadow Generator (<span id="shaGen">0</span>)<br></h3><button onclick="shaGen()" class="darkButton">Sacrifice 50% of your mana dust with DMD<br>gain more DMD by 1<br>Cost: <span id="shaGenCost"></span> Dark mana Dust</button>
+       </div>
+       <div id='light'>
+        <p id="lightbit" style="color: White;font-size: large" class="shadow">You have 0 Light Bit</p>
+        <h3>Duplicate Spell: (<span id="dupli">0</span>)</h3><button onclick="duplicateSpell()" class="lightButton">Double Mana Bit gain<br>Cost: <span id="dupliCost"></span> Light Bit</button>
+        <h3>Adopter Spell:(<span id="adopt">0</span>/100)</h3><button id="adoptButton" onclick="adoptSpell()" class="lightButton">Redude Cost for combining into mana bit by 5<br>Cost: <span id="adoptCost"></span> Light Bit</button>
+       </div>
+    </div>
+    <div id='options'>
+     <h3>Options</h3>
+     <button onClick="save()" class='optionsbutton'>Save</button>
+     <button onClick="importSave()" class='optionsbutton'>Import Save</button>
+     <button onClick="exportSave()" class='optionsbutton'>Export Save</button>
+     <button onClick="hardReset()" class='optionsbutton'><b>HARD RESET</b></button>
+     <p id='debug' style='display:none'>Cheat: <input type="checkbox" id="cheatcheck" onclick="cheatunlock()"></p>
+     <h3>About</h3>
+			<h3>Mana Generators version 0.3 Rewrite</h3>
+			Game by LustHeart 
+			Make with inexperienced skill of JavaScript and HTML<br>hope you enjoyed this game
+			<h3>Special Thanks</h3>
+		  <a href="https://bullz04.github.io/scrap-clicker++/game" target="_blank">(Scrap Clicker++ by Bullz04) </a> for ideas and inspiration and simple notification<br>
+		  <a href="https://kastark.co.uk/games/civclicker/#" target="_blank">Civ Clicker (by Kastark)</a> for simple unrepeatable upgrade<br>
+		  <a href="https://the-long-wait--unsoftcapped3.repl.co/" target="_blank">The Long Wait (by Unsoftcapped 3)</a> for new variable and Rewrite them<br>
+			<button class="changlog"><a href="changelog.html">Changelog</a></button></div>
+			 <div id="stat" class="center" style="display: none">
+    <p>In total, you have gained <span id="alldust">x</span> mana dust</p>
+    <p>You have played this game for <span id="timeplayed">x</span> seconds.</p>
+   </div>
+</body>
+
+</html>

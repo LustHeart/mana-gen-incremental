@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mana Generators</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+ <button onclick="document.location='index.html'" class="upgradeButton">Return to Game</button><br>
+  <button onclick="changelog('update')" style='background-color: #4067a1;' class='flexbox tab'>Changelog</button>
+  <button onclick="changelog('upcoming')" style='background-color: #7a25d0;' class='flexbox tab'>Plan, Features, and Upcoming</button>
+  <div id="update">
+  <h2>7/6/23 (Version 0.3 Rewrite)</h2>
+ - Rewritten Code
+ - Unrepeatable Upgrade is Coming with 3 upgrade (more upgrade is coming soon)<br>
+ - Dark Upgrade, Light Upgrade and balance tab Now require Unrepeatable Upgrade<br>
+ - Reduce cost scaling for Wand, Wizard and Increase cost scaling for Enhance<br>
+ - Change name form Enhance to Sacrifice<br>
+ - Add Auto combine for Mana Bit<br>
+ - Endgame: 1 Mana Fragments
+ </div>
+  <div id="upcoming">
+   <h2>Currently Plan</h2>
+  - Balancing on Early Phase (pre-Balance Fragments)<br>
+  
+   <h2>Upcoming Features</h2>
+  - New Mana Resources (Fragments, Piece, Shard, Gem, Core)<br>
+  - New Prestige Layer [Infinite Gem]
+  - Endgame:
+  </div>
+</body>
+<script>
+ function changelog(tab) {
+      // hide all your tabs, then show the one the user selected.
+      document.getElementById("update").style.display = "none"
+      document.getElementById("upcoming").style.display = "none"
+      document.getElementById(tab).style.display = "inline-block"
+    }
+    // go to a tab for the first time, so not all show
+    changelog("update")
+</script>
+</html>
