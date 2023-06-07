@@ -1,0 +1,145 @@
+* {
+  font-family: sans-serif;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+body {
+  background: #1d1c51;
+  color: #aeaeae;
+}
+
+.tab {
+    font-size: 22px;
+    background-color: rgb(36, 36, 36);
+    color: white;
+    border: 2px solid white;
+    border-radius: 2px;
+    transition-duration: 200ms;
+    cursor: pointer;
+}
+
+.tab:hover {
+    background-color: white;
+    color: rgb(48, 48, 48);
+}
+
+.flexBox {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.shadow {
+  text-shadow: 0.5px 0 #fff, -0.5px 0 #fff, 0 2px #fff, 0 -0.5px #fff,0.5px 0.5px #fff, -0.5px -0.5px #fff, 0.5px -0.5px #fff, -0.5px 0.5px #fff;
+}
+
+.repeatUpgrade {
+  background-color: lightblue;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.changlog {
+  background-color: rgb(110,108,170);
+  color: rgb(26,24,86);
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.combine {
+  font-size : 16px;
+  border-radius: 10px;
+  color : #ffffff;
+  background-color : #650045;
+  transition-duration : 0.2s;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 1px;
+  cursor: pointer;
+}
+
+.optionsbutton{
+  background-color: #008CBA; /* Green */
+  font-size : 16px;
+  border-radius: 10px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;3e;
+}
+
+.upgradeButton{
+  display: block;
+  border-radius: 10px;
+  color : #00;
+  transition-duration : 0.2s;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 1px;
+  cursor: pointer;
+  width: 400px;
+}
+
+button {
+  border: 4px solid #606060;
+  border-radius: 10px;
+  font-size: 19px;
+  padding: 8px;
+  margin-bottom: 6px;
+}
+
+.gentab {
+  font-size : 16px;
+  border-radius: 5px;
+  color : #000000;
+  background-color : #aafffd;
+  transition-duration : 0.2s;
+  padding: 10px 20px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 1px;
+  cursor: pointer;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.permamentlock {
+    padding: 5px;
+    color: lightblue;
+    position: fixed;
+    margin: 5px;
+    padding: 5px;
+    bottom: 0;
+    left: 5px;
+}
+
+a:link {
+  color: lightblue;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: lightblue;
+  background-color: transparent;
+  text-decoration: none;
+}
